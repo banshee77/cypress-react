@@ -3,7 +3,7 @@ services:
   # this is the web application we are going to test
   web:
     container_name: frontend
-    image: cypress-demo:dev
+    image: cypress-react-frontend:3.0
     ports:
       - "3000:3000"
     networks:

@@ -5,7 +5,7 @@ describe("Demo app - form testing", () => {
 
     // expected values
     const expHomePageMessage = "Happy Hacking !"
-    const expTeamPageTeam1 = "User2"
+    const expTeamPageTeam1 = "User1"
     const expMessagePageMessage = "Message has been sent successfully.Greetings from TeamQoQ !"
 
     // form text

@@ -74,3 +74,17 @@ Launches specific test case.
 * **Test execution reports** are stored ./cypress/results/
 * **Test execution video recordings** are stored ./cypress/video/
 * **Jenkinsfile** is used for CI/CD pipeline
+
+## Docker
+docker build -f Dockerfile.dev -t cypress-react-frontend:1.0 . 
+docker run --publish 3000:3000 --detach --name cypress-react-frontend-container cypress-react-frontend:1.0
+docker start -i cypress-react-frontend-container
+
+docker pull cypress/included:5.6.0
+docker run -it -v %cd%:/e2e -w /e2e --name cypress-container -e CYPRESS_baseUrl=http://host.docker.internal:3000 cypress/included:5.6.0
+docker start -i cypress-container
+
+## Docker-compose
+docker-compose -f docker-compose.yaml up --build -exit-code-from cypress
+docker-compose -f docker-compose.yaml up --exit-code-from cypress
+docker-compose -f docker-compose.yaml down
