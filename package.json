@@ -1,0 +1,70 @@
+{
+  "name": "cypress-demo",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "curl": "^0.1.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-rounded-image": "^2.0.11",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.0",
+    "wait-on": "^5.2.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "cy:open": "cypress open",
+    "precy:run": "rimraf cypress/results",
+    "cy:run": "cypress run",
+    "cy:run_firefox": "cypress run --browser firefox",
+    "cy:run_chrome": "cypress run --browser chrome",
+    "cy:run_headed": "cypress run --headed",
+    "precy:run_demo": "rimraf cypress/results",
+    "cy:info": "cypress info",
+    "cy:verify": "cypress verify",
+    "cy:version": "cypress version",
+    "cy:test": "start-server-and-test start http://localhost:3000 cy:run",
+    "cy:test_demo": "start-server-and-test start http://localhost:3000 cy:run_demo",
+    "cy:test_open": "start-server-and-test start http://localhost:3000 cy:open",
+    "cy:wait": "npm start & wait-on http://localhost:3000 && cy:run",
+    "cy:report": "npx mochawesome-merge ./cypress/results/*.json -o ./cypress/results/final_report.json && npx marge ./cypress/results/final_report.json -f final_report.html -o cypress/results",
+    "start:wait": "npm start & wait-on http://localhost:3000",
+    "start:ci": "serve --no-clipboard --listen 3000",
+    "yarn:start": "yarn start & wait-on http://localhost:3000",
+    "server": "start-server-and-test start http://localhost:3000",
+    "cy:ci": "server-test 3000 cy:run",
+    "cy:ci_demo": "server-test 3000 cy:run_demo",
+    "cy:clear_results": "rimraf cypress/results",
+    "precy:ci_demo": "rimraf cypress/results"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "cypress": "^5.6.0",
+    "cypress-iframe": "^1.0.1",
+    "cypress-react-selector": "^2.2.0",
+    "mochawesome": "^6.1.1",
+    "mochawesome-merge": "^4.2.0",
+    "mochawesome-report-generator": "^5.1.0",
+    "start-server-and-test": "^1.11.6"
+  }
+}
