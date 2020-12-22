@@ -9,5 +9,17 @@
     "overwrite": false,
     "html": false,
     "json": true
+  },
+  "env": {
+    "db": {
+      "userName": "",
+      "password": "",
+      "server": "",
+      "options": {
+        "database": "DATABASE_NAME",
+        "encrypt": true,
+        "rowCollectionOnRequestCompletion": true
+      } 
+    }
   }
 }
