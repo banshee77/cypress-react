@@ -25,6 +25,19 @@
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 // import { databaseSnapshot } from './const'
 
-// before(() => {
-//     cy.RestoreDatabase()
-// })
+// // before(() => {
+// //     cy.RestoreDatabase()
+// // })
+
+
+Cypress.Commands.add("RestoreDatabase", () => {
+    const database = Cypress.env().db.options.database
+    try {
+        cy.sqlServer(`USE master alter database ${database} set single_user with rollback immediate RESTORE DATABASE ${database} from DATABASE_SNAPSHOT = '${databaseSnapshot}'`)
+        cy.sqlServer(`USE master alter database ${database} set MULTI_USER`)
+        cy.log('Database has been restored successfully!!')
+    } catch (error) {
+        cy.log(`Error occured while restoring database : ${error}`)
+        cy.sqlServer(`USE master alter database ${database} set MULTI_USER`)
+    }
+})
